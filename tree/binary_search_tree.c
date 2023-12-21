@@ -6,9 +6,7 @@ struct node {
     struct node* left;
     struct node* right;
 };
-
 struct node* tree;
-
 void create_tree(struct node**);
 struct node* insert_element(struct node*, int);
 void preorderTraversal(struct node*);
