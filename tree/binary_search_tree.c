@@ -2,8 +2,8 @@
 #include <malloc.h>
 
 struct node {
-    int data;
     struct node* left;
+    int data;
     struct node* right;
 };
 struct node* tree;
