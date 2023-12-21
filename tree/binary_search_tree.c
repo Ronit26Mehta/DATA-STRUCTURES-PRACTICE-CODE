@@ -29,7 +29,6 @@ int main() {
     struct node* ptr;
     create_tree(&tree);
     do {
-        printf("\nRonitSatishMehta 6009230207");
         printf("\n\t------------MAIN MENU ---------\n");
         printf("\n1.Insert Element");
         printf("\n2.preorder traversal");
