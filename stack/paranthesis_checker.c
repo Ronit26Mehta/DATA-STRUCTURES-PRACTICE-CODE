@@ -1,56 +1,72 @@
-#include <stdio.h>
-#include <string.h>
-#define MAX 100
+#include<stdio.h>
+#include<string.h>
+#define max 100
+char stack[max];
 int top = -1;
-int stk[MAX];
-void push(char);
+void push(char exp);
 char pop();
-void main()
+void main(){
+    char exp[max],temp;
+    int flag = 1;
+    printf("\nEnter expression:");
+    fgets(exp,max,stdin);
+    for (int i = 0; i < strlen(exp); i++)
+    {
+        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
+        {
+            push(exp[i]);
+        }
+        else if (exp[i] == ')'  || exp[i] == ']' || exp[i] == '}')
+        {
+            if (top == -1)
+            {
+                flag = 0;
+                break;
+            }
+            else
+            {
+                temp = pop();
+                if (exp[i] == ')' && (temp == '{'  || temp == '['))
+                {
+                    flag =0;
+                }
+                if (exp[i] == '}' && (temp == '[' || temp == '('))
+                {
+                    flag = 0;
+                }
+                if (exp[i] == ']' && (temp == '(' || temp == '{'))
+                {
+                    flag = 0;
+                }
+            }
+            
+        }
+        
+    }
+    if (top>=0)
+    {
+        flag = 0;
+    }
+    if (flag == 1)
+    {
+        printf("\nvalid expression");
+    }
+    else
+    {
+        printf("\ninvalid expression");
+    }
+}
+void push(char exp){
+if (top == max-1)
 {
-char exp[MAX],temp;
-int i, flag=1;
-printf("\nRonit Satish Mehta 60009230207");
-printf("\nEnter an expression : ");
-gets(exp);
-for(i=0;i<strlen(exp);i++)
-{
-if(exp[i]=='(' || exp[i]=='{' || exp[i]=='[')
-push(exp[i]);
-if(exp[i]==')' || exp[i]=='}' || exp[i]==']')
-if(top == -1)
-flag=0;
+    printf("\nfull");
+}
 else
 {
-temp=pop();
-if(exp[i]==')' && (temp=='{' || temp=='['))
-flag=0;
-if(exp[i]=='}' && (temp=='(' || temp=='['))
-flag=0;
-if(exp[i]==']' && (temp=='(' || temp=='{'))
-flag=0;
+    top++;
+    stack[top]= exp;
 }
 }
-if(top>=0)
-flag=0;
-if(flag==1)
-printf("\n Valid expression");
-else
-printf("\n Invalid expression");
-}
-void push(char c)
-{
-if(top == (MAX-1))
-printf("Stack Overflow\n");
-else
-{
-top=top+1;
-stk[top] = c;
-}
-}
-char pop()
-{
-if(top == -1)
-printf("\n Stack Underflow");
-else
-return(stk[top--]);
+char pop(){
+    return stack[top--];
 }
