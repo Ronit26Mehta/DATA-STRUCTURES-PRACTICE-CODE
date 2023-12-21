@@ -14,7 +14,7 @@ void main(){
   
     printf("\nEnter infix expression:");
     fgets(source,max,stdin);
-    source[strcspn(source,"\n")] == '\0';
+    source[strcspn(source,"\n")] = '\0';
     reverse(source);
     strcpy(target,"");
     InfixtoPostfix(temp,target);
