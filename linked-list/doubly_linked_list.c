@@ -22,7 +22,7 @@ void main(){
     int choice;
     do
     {
-        printf("\n\t CIRCULAR LINKED LIST \t\n");
+        printf("\n\t DOUBLY LINKED LIST \t\n");
         printf("\n\t press 1 to create linked list \t\n");
         printf("\n\t press 2 to display linked list \t\n");
         printf("\n\t press 3 to insert at beginning of linked list \t\n");
